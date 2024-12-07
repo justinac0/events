@@ -1,0 +1,17 @@
+package templates
+
+templ Index() {
+    @Layout("Home") {
+        <h1>Events Testing</h1>
+        <button hx-post="/start" hx-swap="none">Start Timed Process</button>
+        <hr>
+        <form hx-post="/send-event" hx-swap="none">
+            <input type="text" name="event" autocomplete="off">
+            <button type="submit">Send ASYNC Event</button>
+        </form>
+
+        <div hx-get="/poll-results" hx-trigger="every 500ms"></div>
+        <p>type "abort" in input to stop timed process</p>
+        <p id="results"></p>
+    }
+}
